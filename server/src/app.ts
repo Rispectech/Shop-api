@@ -1,5 +1,6 @@
 import express from "express";
 import connectDB from "./db/db";
+require("dotenv").config();
 const app = express();
 
 const port = 8000;
