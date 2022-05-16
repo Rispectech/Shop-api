@@ -1,13 +1,20 @@
+require("dotenv").config();
+
 import express from "express";
 import connectDB from "./db/db";
-require("dotenv").config();
-const app = express();
+import ErrorMiddleWare from "./middleware/async";
+import router from "./routes/routes";
 
 const port = 8000;
+const app = express();
 
 app.get("/", (req, res) => {
   res.send("basic send");
 });
+
+//middleware
+app.use("/api/v1", router);
+app.use(ErrorMiddleWare);
 
 const start = async () => {
   try {
